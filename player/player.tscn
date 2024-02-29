@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://player/Player_body.gd" id="1_rhbn3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ve4u"]
-radius = 55.0091
+radius = 52.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_xlrs4"]
 radial_segments = 12
