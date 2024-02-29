@@ -1,57 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://do4cyua56b2ey"]
+[gd_scene load_steps=6 format=3 uid="uid://do4cyua56b2ey"]
 
-[ext_resource type="Texture2D" uid="uid://djrbyvqtvjtys" path="res://icon.svg" id="1_rqj5r"]
+[ext_resource type="Script" path="res://Levels/Level0/Level0.gd" id="1_m8pxi"]
 [ext_resource type="PackedScene" uid="uid://dyvurnag6sf62" path="res://player/player.tscn" id="2_f2g15"]
+[ext_resource type="PackedScene" uid="uid://ws5mlfme7ii1" path="res://Levels/Level0/core.tscn" id="3_c6w71"]
+[ext_resource type="PackedScene" uid="uid://duekmfwsi461r" path="res://enemy/normal/normal.tscn" id="4_iiyom"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2r73"]
-size = Vector2(129, 128)
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_kuudi"]
+vertices = PackedVector2Array(10726, 9997, -10865, 9827, -10755, -11012, 10519, -11012)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(10529, -11022, 10737, 10008, -10876, 9837, -10765, -11022)])
+parsed_geometry_type = 0
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Level0" type="Node2D"]
-
-[node name="wall" type="StaticBody2D" parent="."]
-position = Vector2(235, 95)
-
-[node name="Icon" type="Sprite2D" parent="wall"]
-texture = ExtResource("1_rqj5r")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
-shape = SubResource("RectangleShape2D_w2r73")
-
-[node name="wall2" type="StaticBody2D" parent="."]
-position = Vector2(585, 189)
-
-[node name="Icon" type="Sprite2D" parent="wall2"]
-texture = ExtResource("1_rqj5r")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
-shape = SubResource("RectangleShape2D_w2r73")
-
-[node name="wall3" type="StaticBody2D" parent="."]
-position = Vector2(919, 373)
-
-[node name="Icon" type="Sprite2D" parent="wall3"]
-texture = ExtResource("1_rqj5r")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall3"]
-shape = SubResource("RectangleShape2D_w2r73")
-
-[node name="wall4" type="StaticBody2D" parent="."]
-position = Vector2(542, 552)
-
-[node name="Icon" type="Sprite2D" parent="wall4"]
-texture = ExtResource("1_rqj5r")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall4"]
-shape = SubResource("RectangleShape2D_w2r73")
-
-[node name="wall5" type="StaticBody2D" parent="."]
-position = Vector2(152, 402)
-
-[node name="Icon" type="Sprite2D" parent="wall5"]
-texture = ExtResource("1_rqj5r")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall5"]
-shape = SubResource("RectangleShape2D_w2r73")
+script = ExtResource("1_m8pxi")
 
 [node name="Player" parent="." instance=ExtResource("2_f2g15")]
 position = Vector2(0, 247)
+
+[node name="Core" parent="." instance=ExtResource("3_c6w71")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_kuudi")
+
+[node name="Normal" parent="." instance=ExtResource("4_iiyom")]
+position = Vector2(-2042, -130)
